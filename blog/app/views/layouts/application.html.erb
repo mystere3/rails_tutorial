@@ -7,8 +7,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="banner">
+    <p align="center"><%= image_tag("MrE_Header_100px.png") %></p>
+		</div>
+		<div id="navBox">
+			<nav>
+				<ul class="nav" align="center">
+					
+					<li>
+            <%=link_to( 'Home', articles_path, class: "my-button hvr-pulse-shrink") %>
+            <%=link_to( 'New Article', new_article_path, class: "my-button hvr-pulse-shrink") %>
+					</li>
+					
+				</ul>
+			</nav>
+		</div>
+		<div id="aboutContainer">
+			<div id="mainWindow">
+				<div id="spacerBox"></div>
+				
+        <%= yield %>
+				
+			</div>
+		</div>
 
-<%= yield %>
+
 
 </body>
 </html>

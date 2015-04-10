@@ -13,3 +13,177 @@
  *= require_tree .
  *= require_self
  */
+
+
+html{
+  background-color: #99bbd2;
+
+}
+#banner{
+	height: 130px;
+  width: 100%;
+  background-image: url(tunnel_Fade75.jpg);
+  border-top: 2pt solid #000;
+  border-bottom: 1pt solid #FFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right:0;
+}
+
+#navBox{
+  width: 100%;
+  background-color: #5c829c;
+  position: fixed;
+  top: 133px;
+  left: 0;
+  right: 0;
+  border-top: 2pt solid #000;
+  border-bottom: 2pt solid #000;
+}
+
+ul.nav{
+	list-style: none;
+	padding: 0;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+ul.nav li{
+	display: inline;
+}
+input{
+	padding: 2px;
+	font-size: 1em;
+	font-family: "Arial", sans-serif;
+}
+.my-button{
+	padding: 7px 15px;
+	margin: 0px;
+	border: 2px solid #83b7dc;
+	color: #BBB;
+	background-color: #333;
+	text-decoration: none;
+	display: inline-block;
+	border-radius: 4px;
+}
+.my-button:hover{
+	color: #333;
+	background-color: #BBB;
+	border: 2px solid #83b7dc;
+}
+
+#container{
+  height: 2500px;
+  background-image: url(StickerSheet-1.png);
+  border-left: 2px solid #FFF;
+  border-right: 2px solid #FFF;
+  right: 5px;
+}
+#aboutContainer{
+  height: 2125px;
+  background-image: url(OwnedNight.jpg);
+  border-left: 2px solid #FFF;
+  border-right: 2px solid #FFF;
+  right: 5px;
+}
+#stickerContainer{
+  height: 2125px;
+  background-image: url(offDelancey.jpg);
+  border-left: 2px solid #FFF;
+  border-right: 2px solid #FFF;
+  right: 5px;
+}
+
+#mainWindow{
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: #99bbd2;
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
+}
+#spacerBox{
+  width: 100%;
+  height: 168px;
+  /*background-color: red;*/
+}
+.twoColumnBox{
+  width: 47%;
+  height: 700px;
+  float: left;
+  /*background-color: red;*/
+  margin: 0 auto;
+  padding-left: 8px;
+}
+.pictureBox{
+  width: 220px;
+  height: 300px;
+  float: left;
+  margin: 15px;
+  border: solid 0px green;
+}
+.galleryImage{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.galleryTitle{
+  text-align: center;
+  font-family: sans-serif;
+  font-variant: small-caps;
+  font-size: 20pt;
+  line-height: 17pt;
+
+}
+#footer{
+  bottom: 0;
+  right:0;
+  clear: both;
+  position: fixed;
+}
+
+
+
+
+
+
+
+
+/* Pulse Shrink */
+@-webkit-keyframes hvr-pulse-shrink {
+  to {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+@keyframes hvr-pulse-shrink {
+  to {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+.hvr-pulse-shrink {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+}
+.hvr-pulse-shrink:hover, .hvr-pulse-shrink:focus, .hvr-pulse-shrink:active {
+  -webkit-animation-name: hvr-pulse-shrink;
+  animation-name: hvr-pulse-shrink;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
