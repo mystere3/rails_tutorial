@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blog</title>
+  <title>MrE3Blog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -15,7 +15,8 @@
 				<ul class="nav" align="center">
 					
 					<li>
-            <%=link_to( 'Home', articles_path, class: "my-button hvr-pulse-shrink") %>
+            <%=link_to( 'Home', welcome_index_path, class: "my-button hvr-pulse-shrink") %>
+            <%=link_to( 'Blog', articles_path, class: "my-button hvr-pulse-shrink") %>
             <%=link_to( 'New Article', new_article_path, class: "my-button hvr-pulse-shrink") %>
 					</li>
 					
