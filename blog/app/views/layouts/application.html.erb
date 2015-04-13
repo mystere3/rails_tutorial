@@ -18,6 +18,12 @@
             <%=link_to( 'Home', welcome_index_path, class: "my-button hvr-pulse-shrink") %>
             <%=link_to( 'Blog', articles_path, class: "my-button hvr-pulse-shrink") %>
             <%=link_to( 'New Article', new_article_path, class: "my-button hvr-pulse-shrink") %>
+            <% if @current_user == nil %>
+              <% log_button_text = "Log In" %>
+            <% else %>
+              <% log_button_text = "Log Out" %>
+            <% end %>
+            <%=link_to( log_button_text, writers_login_path, class: "my-button hvr-pulse-shrink") %>
 					</li>
 					
 				</ul>

@@ -1,0 +1,15 @@
+<% if @current_user == nil %>
+  <h2>Log In Authors...</h2>
+<%= form_for @writer do |f| %>
+
+  <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+    <%= f.submit "Author Login"%>
+  <% end %>
+  <%=link_to( 'Author Sign Up', new_writer_path, class: "my-button hvr-pulse-shrink") %>
+<% else %>
+<% user = Writer.where(id: @current_user_id) %>
+  <h2> Welcome <%= user.name %> </h2>
+<% end %>

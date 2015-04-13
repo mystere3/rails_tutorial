@@ -4,7 +4,7 @@ class WritersController < ApplicationController
   end
   
   def show
-    @writer = Writer.find(params[:id])
+#     @writer = Writer.find(params[:id])
   end
   
   def new
@@ -40,6 +40,9 @@ class WritersController < ApplicationController
     @writer.destroy
     
     redirect_to writers_path
+  end
+  
+  def login
   end
   
   private

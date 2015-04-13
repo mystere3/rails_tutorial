@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :writers do
     resources :articles
   end
+  
+  get 'writers/login', to: 'writers#login'
+  post 'writers/login', to: 'writers#login'
 
   root 'welcome#index'
 
