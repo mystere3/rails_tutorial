@@ -3,9 +3,9 @@ class WritersController < ApplicationController
     @writers = Writer.all
   end
   
-  def show
-#     @writer = Writer.find(params[:id])
-  end
+#   def show
+# #     @writer = Writer.find(params[:id])
+#   end
   
   def new
     @writer = Writer.new
@@ -43,6 +43,7 @@ class WritersController < ApplicationController
   end
   
   def login
+    @writer =  Writer.new
   end
   
   private
