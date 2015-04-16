@@ -3,9 +3,9 @@ class WritersController < ApplicationController
     @writers = Writer.all
   end
   
-#   def show
-# #     @writer = Writer.find(params[:id])
-#   end
+  def show
+    @writer = Writer.find(params[:id])
+  end
   
   def new
     @writer = Writer.new
@@ -16,12 +16,18 @@ class WritersController < ApplicationController
   end
   
   def create
+#     binding.pry
     @writer = Writer.new(writer_params)
     
     if @writer.save
-      redirect_to @writer
+      #happy path
+      # THIS SECOND BIT OF NEXT LINE IS THE SAME AS FLASH MESSAGE BELOW IN DESTROY
+      redirect_to writer_path(@writer), notice: 'User was added successfully' 
+      current_user_id = @writer[:id]
     else
-      render 'new'
+      #unhappy path
+      flash[:alert] = 'There was an error creating the student'
+      render :new
     end
   end
   
@@ -48,6 +54,7 @@ class WritersController < ApplicationController
   
   private
     def writer_params
-      params.require(:name, :password)
+      params.require(:writer).permit(:name, :password)
+ 
     end
 end
