@@ -4,7 +4,21 @@ class WritersController < ApplicationController
   end
   
   def show
-    @writer = Writer.find(params[:id])
+    binding.pry
+    if params[:name].present?
+      @writer = Writer.validate(params[:name], params[:password])
+      if @writer == nil
+        redirect_to writers_login_path, alert: 'Username or password was incorrect.'
+      else
+        flash[:notice] = '#{@writer.name} logged in successfully.'
+      end
+    else
+      @writer = Writer.find(params[:id])
+    end
+
+    
+    
+    
   end
   
   def new
@@ -26,7 +40,7 @@ class WritersController < ApplicationController
       current_user_id = @writer[:id]
     else
       #unhappy path
-      flash[:alert] = 'There was an error creating the student'
+      flash[:alert] = 'There was an error creating the user'
       render :new
     end
   end
@@ -51,6 +65,10 @@ class WritersController < ApplicationController
   def login
     @writer =  Writer.new
   end
+
+  # def validate
+
+  # end
   
   private
     def writer_params

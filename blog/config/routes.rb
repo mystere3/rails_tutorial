@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'writers/login', to: 'writers#login'
   post 'writers/login', to: 'writers#login'
 
+  get '/validate', to: 'writers#show'
+
   resources :writers do
     resources :articles
   end
