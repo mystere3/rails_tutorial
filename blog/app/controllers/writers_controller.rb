@@ -4,7 +4,7 @@ class WritersController < ApplicationController
   end
   
   def show
-    binding.pry
+#     binding.pry
     if params[:name].present?
       @writer = Writer.validate(params[:name], params[:password])
       if @writer == nil

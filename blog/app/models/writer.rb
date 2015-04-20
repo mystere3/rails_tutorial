@@ -5,7 +5,7 @@ class Writer < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 4}
          
   def self.validate(name, pass)
-    binding.pry
+#     binding.pry
     user = Writer.find_by name: name
 
     if user != nil
