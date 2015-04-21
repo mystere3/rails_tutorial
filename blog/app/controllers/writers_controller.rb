@@ -15,10 +15,7 @@ class WritersController < ApplicationController
     else
       @writer = Writer.find(params[:id])
     end
-
-    
-    
-    
+    @articles = @writer.articles
   end
   
   def new

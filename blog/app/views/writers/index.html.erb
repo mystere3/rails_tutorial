@@ -1,0 +1,17 @@
+<h1>Contributors</h1>
+
+<table>
+  
+  
+  <% @writers.each do |writer| %>
+  <tr>
+    <td><%= writer.name %></td>
+
+    <td><%= link_to 'Show', writer_path(writer) %></td>
+    <td><%= link_to 'Edit', edit_writer_path(writer) %></td>
+    <td><%= link_to 'Destroy', writer_path(writer),
+            method: :delete, 
+            data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</table>

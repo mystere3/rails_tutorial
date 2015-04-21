@@ -17,6 +17,7 @@
 					<li>
             <%=link_to( 'Home', welcome_index_path, class: "my-button hvr-pulse-shrink") %>
             <%=link_to( 'Blog', articles_path, class: "my-button hvr-pulse-shrink") %>
+            <%=link_to( 'Writers', writers_path, class: "my-button hvr-pulse-shrink") %>
             
             <%=link_to( 'New Article', new_article_path, class: "my-button hvr-pulse-shrink") %>
             <% if @current_user_id == nil %>
