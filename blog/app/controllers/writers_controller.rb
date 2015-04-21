@@ -15,7 +15,10 @@ class WritersController < ApplicationController
     else
       @writer = Writer.find(params[:id])
     end
-    @articles = @writer.articles
+
+    
+    
+    
   end
   
   def new
@@ -56,7 +59,7 @@ class WritersController < ApplicationController
     @writer = Writer.find(params[:id])
     @writer.destroy
     
-    redirect_to writers_path
+    redirect_to writers_path, alert: 'Writer deleted'
   end
   
   def login
