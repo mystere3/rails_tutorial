@@ -14,18 +14,8 @@
   <%= @article.text %>
 </p>
 
-<h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %>
+<%= link_to 'Edit', edit_article_path(@article) %>
+<%= link_to 'Back', articles_path %>
 
 <h2>Add a comment:</h2>
 <%= form_for([@article, @article.comments.build]) do |f| %>
@@ -35,12 +25,22 @@
   </p>
   <p>
     <%= f.label :body %><br>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, :cols => "30", :rows => "5" %>
   </p>
   <p>
     <%= f.submit %>
   </p>
 <% end %>
 
-<%= link_to 'Edit', edit_article_path(@article) %>
-<%= link_to 'Back', articles_path %>
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+  <div class="comment_box">
+    <%= comment.commenter %>
+    <div class="comment_body_box">
+      <%= comment.body %>
+      </div>
+  </div>
+<% end %>
+
+
+
