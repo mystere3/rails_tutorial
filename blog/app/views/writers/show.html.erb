@@ -1,9 +1,9 @@
 <h1><%= @writer.name %>'s articles </h1>
 
-<% unless @articles.nil? %>
+<!-- <% unless @articles.nil? %> -->
   <ul>
     <% @articles.each do |article| %>
       <li> <%= link_to article.title, article_path(article) %> </li>
     <% end %>
   </ul>
-<% end %> 
+<!-- <% end %>  -->
