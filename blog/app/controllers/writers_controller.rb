@@ -1,24 +1,15 @@
 class WritersController < ApplicationController
+
+  # before_action :authorize, except: [:index, :show, :new]
+
   def index
     @writers = Writer.all
   end
   
   def show
-#     binding.pry
-    if params[:name].present?
-      @writer = Writer.validate(params[:name], params[:password])
-      if @writer == nil
-        redirect_to writers_login_path, alert: 'Username or password was incorrect.'
-      else
-        flash[:notice] = '#{@writer.name} logged in successfully.'
-      end
-    else
-      @writer = Writer.find(params[:id])
-    end
+    # binding.pry
+    @writer = Writer.find_by_id(params[:id])
     @articles = @writer.articles
-    
-    
-    
   end
   
   def new
@@ -37,7 +28,6 @@ class WritersController < ApplicationController
       #happy path
       # THIS SECOND BIT OF NEXT LINE IS THE SAME AS FLASH MESSAGE BELOW IN DESTROY
       redirect_to writer_path(@writer), notice: 'User was added successfully' 
-      current_user_id = @writer[:id]
     else
       #unhappy path
       flash[:alert] = 'There was an error creating the user'
@@ -46,25 +36,30 @@ class WritersController < ApplicationController
   end
   
   def update
-    @writer = Writer.find(params[:id])
+    @writer = Writer.find_by_id(writer_params)
     
-    if @writer.update(writer_params)
-      redirect_to @writer
+    if @writer.update_attributes(params[:writer])
+      redirect_to writer_path(@writer), notice: 'User updated successfully.'
     else
-      render 'edit'
+      flash[:alert] = 'There was an error updating user.'
+      render :edit
     end
   end
   
   def destroy
-    @writer = Writer.find(params[:id])
-    @writer.destroy
+    @writer = Writer.find_by_id(params[:id])
+    if @writer
+      @writer.destroy
+      flash[:notice] = "#{@writer.name} was successfully deleted."
+    end
     
-    redirect_to writers_path, alert: 'Writer deleted'
+    
+    redirect_to writers_path
   end
   
-  def login
-    @writer =  Writer.new
-  end
+  # def login
+  #   @writer =  Writer.new
+  # end
 
   # def validate
 

@@ -19,21 +19,25 @@
             <%=link_to( 'Blog', articles_path, class: "my-button hvr-pulse-shrink") %>
             <%=link_to( 'Writers', writers_path, class: "my-button hvr-pulse-shrink") %>
             
-            <%=link_to( 'New Article', new_article_path, class: "my-button hvr-pulse-shrink") %>
-            <% if @current_user_id == nil %>
-              <% log_button_text = "Log In" %>
+            <% if current_writer %>
+              <%=link_to( 'New Article', new_article_path, class: "my-button hvr-pulse-shrink") %>
+              <%= link_to( "Logout #{current_writer.name}", logout_path, method: :delete, class: "my-button hvr-pulse-shrink") %>
             <% else %>
-              <% log_button_text = "Log Out" %>
+              <%= link_to( "Login", login_path, class: "my-button hvr-pulse-shrink") %>
             <% end %>
-            <%=link_to( log_button_text, writers_login_path, class: "my-button hvr-pulse-shrink") %>
 					</li>
 					
 				</ul>
 			</nav>
 		</div>
 		<div id="aboutContainer">
+
 			<div id="mainWindow">
-				<div id="spacerBox"></div>
+				<div id="spacerBox">
+   
+        </div>
+          <%= flash[:notice] if flash[:notice] %>
+          <%= flash[:alert] if flash[:alert] %> 
 				
         <%= yield %>
 				

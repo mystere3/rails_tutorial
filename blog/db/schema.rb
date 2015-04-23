@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421020439) do
+ActiveRecord::Schema.define(version: 20150423024344) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150421020439) do
 
   create_table "writers", force: :cascade do |t|
     t.string "name"
-    t.string "password"
+    t.string "password_digest"
   end
 
 end

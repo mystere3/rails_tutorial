@@ -1,11 +1,15 @@
 class ArticlesController < ApplicationController
   
+  before_action :authorize, except: [:index, :show]
+
   def index
     @articles = Article.all
   end
   
   def show
+
     @article = Article.find(params[:id])
+        binding.pry
   end
   
   def new
@@ -18,6 +22,7 @@ class ArticlesController < ApplicationController
   
   def create
     @article = Article.new(article_params)
+    @article.writer_id = current_writer.id
     
     if @article.save
       redirect_to article_path(@article), notice: 'Article saved successfully'
@@ -28,9 +33,9 @@ class ArticlesController < ApplicationController
   end
   
   def update
-    @article = Article.find(params[:id])
+    @article = Article.find_by_id(project_params)
     
-    if @article.update(article_params)
+    if @article.update_attributes(params[:article])
       redirect_to article_path(@article), notice: 'Article updated successfully'
     else
       flash[:alert] = 'There was an error updating the article'

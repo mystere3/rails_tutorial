@@ -8,10 +8,14 @@
     <td><%= writer.name %></td>
 
     <td><%= link_to 'Show', writer_path(writer) %></td>
-    <td><%= link_to 'Edit', edit_writer_path(writer) %></td>
-    <td><%= link_to 'Destroy', writer_path(writer),
-            method: :delete, 
-            data: { confirm: 'Are you sure?' } %></td>
+
+    <% if session[:writer_id] == writer.id %>
+
+      <td><%= link_to 'Edit', edit_writer_path(writer) %></td>
+      <td><%= link_to 'Destroy', writer_path(writer),
+              method: :delete, 
+              data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
   <% end %>
 </table>
