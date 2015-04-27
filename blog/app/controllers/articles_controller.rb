@@ -35,9 +35,9 @@ class ArticlesController < ApplicationController
   
   def update
     binding.pry
-    @article = Article.find_by_id(article_params)
+    @article = Article.find_by_id(params[:id])
     
-    if @article.update_attributes(params[:article])
+    if @article.update_attributes(article_params)
       redirect_to article_path(@article), notice: 'Article updated successfully'
     else
       flash[:alert] = 'There was an error updating the article'
