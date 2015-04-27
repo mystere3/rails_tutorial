@@ -17,10 +17,11 @@ class ArticlesController < ApplicationController
   end
   
   def edit
-    @article = Article.find(params[:id])
+    @article = Article.find_by_id(params[:id])
   end
   
   def create
+    binding.pry
     @article = Article.new(article_params)
     @article.writer_id = current_writer.id
     
@@ -33,13 +34,14 @@ class ArticlesController < ApplicationController
   end
   
   def update
-    @article = Article.find_by_id(project_params)
+    binding.pry
+    @article = Article.find_by_id(article_params)
     
     if @article.update_attributes(params[:article])
       redirect_to article_path(@article), notice: 'Article updated successfully'
     else
       flash[:alert] = 'There was an error updating the article'
-      render 'edit'
+      render :edit
     end
   end
   
@@ -52,7 +54,7 @@ class ArticlesController < ApplicationController
   
   private
     def article_params
-      params.require(:article).permit(:title, :text, :writer_id)
+      params.require(:article).permit(:title, :text, :writer_id, :tag_ids => [])
     end
   
 end
