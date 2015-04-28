@@ -21,9 +21,9 @@
             
             <% if current_writer %>
               <%=link_to( 'New Article', new_article_path, class: "my-button hvr-pulse-shrink") %>
-              <%= link_to( "Logout #{current_writer.name}", logout_path, method: :delete, class: "my-button hvr-pulse-shrink") %>
+              <%= link_to( "Logout #{current_writer.name}", destroy_writer_session_path, method: :delete, class: "my-button hvr-pulse-shrink") %>
             <% else %>
-              <%= link_to( "Login", login_path, class: "my-button hvr-pulse-shrink") %>
+              <%= link_to( "Login", new_writer_session_path, class: "my-button hvr-pulse-shrink") %>
             <% end %>
 					</li>
 					

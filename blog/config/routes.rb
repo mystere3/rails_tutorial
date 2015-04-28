@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :writers
   get 'welcome/index'
   
   resources :articles do
     resources :comments
+    resources :tags
   end
 
   # get 'writers/login', to: 'writers#login'

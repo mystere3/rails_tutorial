@@ -1,6 +1,6 @@
 class WritersController < ApplicationController
 
-  # before_action :authorize, except: [:index, :show, :new]
+  before_action :authenticate_writer!, except: [:index, :show, :new]
 
   def index
     @writers = Writer.all

@@ -1,0 +1,11 @@
+<h2>Add a tag:</h2>
+<%= form_for([@article, @article.tags.build]) do |f| %>
+  <p>
+   
+    <%= f.text_field :name %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

@@ -14,7 +14,7 @@
   <%= @article.text %>
 </p>
 
-<% if session[:writer_id] == @article.writer_id %>
+<% if current_writer && current_writer[:id] == @article.writer_id %>
 
   <%= link_to 'Edit', edit_article_path(@article) %>
   <%= link_to 'Destroy', article_path(@article),
@@ -31,6 +31,8 @@
   </li> -->
   <%=link_to( tag.name, "#", class: "my-button") %>
 <% end %>
+
+<%= render 'add_tag' %>
 
 <h2>Add a comment:</h2>
 <%= form_for([@article, @article.comments.build]) do |f| %>
@@ -56,6 +58,7 @@
     </div>
   </div>
 <% end %>
+
 
 
 

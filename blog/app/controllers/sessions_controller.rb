@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  before_action :authorize, only: [:destroy]
+  before_action :authenticate_writer!, only: [:destroy]
 
   def new
     
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:writer_id] = nil
+    current_writer = nil
     redirect_to :root, notice: "Logged out."
   end
   

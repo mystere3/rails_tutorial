@@ -1,10 +1,14 @@
 class Writer < ActiveRecord::Base
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+  
   has_many :comments 
   has_many :articles
   validates :name, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 4}, on: :create
-  validates :password, confirmation: true
+  validates :password_confirmation, presence: true
          
  
 

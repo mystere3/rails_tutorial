@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   
-  before_action :authorize, except: [:index, :show]
+  before_action :authenticate_writer!, except: [:index, :show]
 
   def index
     @articles = Article.all
@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
   end
   
   def create
-    binding.pry
+
     @article = Article.new(article_params)
     @article.writer_id = current_writer.id
     
@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
   end
   
   def update
-    binding.pry
+
     @article = Article.find_by_id(params[:id])
     
     if @article.update_attributes(article_params)
